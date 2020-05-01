@@ -1,0 +1,108 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+import java.util.Scanner;
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	
+	int n ;
+	  int add=0;
+	    int min,max=0;
+	    int min2=0;
+	Scanner in = new Scanner(System.in);
+	System.out.println("Enter the no of Persons");
+	n= in.nextInt();
+	
+	System.out.println("No of Persons="+n);
+	
+	System.out.println("Enter the Cost for each Person");
+	int a[]=new int[n];
+	 List<Integer> list = new ArrayList<Integer>(); 
+	 List<Integer> list_2 = new ArrayList<Integer>(); 
+	for(int i=0;i<n;i++)
+	{
+	   //a[i]=in.nextInt();
+	   list.add(in.nextInt());
+	}
+	   
+	    if(n==1){
+	    System.out.println("minimum total coast="+list.get(0));
+	    }
+	    else if(n==2)
+	    {
+	     int total=list.get(0)+list.get(1);
+	    System.out.println("minimum total coast="+total);
+	    }
+	  
+	     else
+	     {
+	         for(int counter=0;counter<list.size();counter++)
+	         {
+	             
+	           // if(counter==0)
+	           // {
+	           //     add=list.get(0)+list.get(1);
+	           //     if(list.get(0)<list.get(1))
+	           //     {
+	           //     min=list.get(0);
+	           //     max=list.get(1);
+	           //     }
+	           //     else{
+	           //          min=list.get(1);
+	           //     max=list.get(0);
+	           //     }
+	           //     list_2.add(max);
+	           //     list.add(min);
+	           // }
+	           // else{
+	           if (counter==list.size()-2)
+	           {
+	                if(list.get(counter)<list.get(counter+1))
+	                {
+	                    min=list.get(counter);
+	                    max=list.get(counter+1);
+	                   
+	                }
+	                else{
+	                    min=list.get(counter+1);
+	                    max=list.get(counter);
+	                    
+	                }
+	                add=add+max;
+	           }
+	           else{
+	                if(list.get(counter)<list.get(counter+1))
+	                {
+	                    min=list.get(counter);
+	                    max=list.get(counter+1);
+	                   
+	                }
+	                else{
+	                    min=list.get(counter+1);
+	                    max=list.get(counter);
+	                    
+	                }
+	                add=add+max;
+	                list_2.add(max);
+	                list_2.add(min);
+	                min2=Collections.min(list_2);
+	                add=add+min2;
+	                int index= list_2.indexOf(min2);
+	                list_2.remove(index);
+	                list.add(min2);
+	           // }
+	           }
+	            System.out.println("value of total after each loop = "+add);
+	            counter=counter+1;
+	         }
+	        
+	         System.out.println(+add);
+	     }
+	    }
+}
